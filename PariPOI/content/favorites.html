@@ -1,0 +1,49 @@
+<div>
+    <form name="addFavFrom">
+        <div class="row">
+            <input name="newFavName"
+                   ng-model="newFavName"
+                   type="text"
+            />
+            <input name="addFav"
+                   ng-click="addFav($event)"
+                   type="button"
+                   value="add Favorite"
+            />
+
+            <div class="col-sm-8"></div>
+            <div>
+
+                <input id="add2db"
+                       name="add2db"
+                       ng-click="saveFavorites($event)"
+                       type="button"
+                       value="save Favorites"
+                >
+            </div>
+        </div>
+        <div class="container">
+
+            <div ng-model="fav2show" ng-repeat="r in fav2show | orderBy:r['position']">
+
+                <br>
+                <div class="card" id="{{r['name']}}">
+                    <div class="card-header" ng-click="viewPOI(r)">Name: {{r['name']}}.<br>
+                    </div>
+                    <img alt="" class="poimg" ng-click="viewPOI(r)" ng-src="{{ r['image'] }}">
+                    <img alt="" height="30px" id="{{r['name']}} liked" name="{{r['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(r['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+                    <img alt="" height="30px" id="{{r['name']}} unliked" name="{{r['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(r['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button.png" width="30px"/>
+                    <br>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

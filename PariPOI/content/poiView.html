@@ -1,0 +1,61 @@
+<div class="card" id="{{viewedPoi['name']}}">
+    <div class="card-header">Name: {{viewedPoi['name']}}.<br>
+    </div>
+    <img alt="" class="poimg" ng-src="{{ viewedPoi['image'] }}">
+    <img alt="" height="30px" id="{{viewedPoi['name']}} liked" name="{{viewedPoi['name']}}" ng-click="like($event)"
+         ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(viewedPoi['name'])"
+         ng-model="rlike"
+         ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+    <img alt="" height="30px" id="{{viewedPoi['name']}} unliked" name="{{viewedPoi['name']}}" ng-click="like($event)"
+         ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(viewedPoi['name'])"
+         ng-model="rlike"
+         ng-src="resources/images/rate-star-button.png" width="30px"/>
+    <br>
+
+
+    <div class="col-sm-3"></div>
+    <div class="card-body">
+        <div class="card-text">Rank: {{viewedPoi['ranking']}}%</div>
+        <div class="card-text">Views: {{viewedPoi['views']}}</div>
+        <div class="card-text">Description:<br> {{viewedPoi['description']}}</div>
+        <br>
+        <br>
+        <div class="col-sm-4" ng-hide="!loggedIn">
+            <input name="addReview"
+                   type="button"
+                   value="Write a review"
+                   ng-click="addReview($event)"
+            />
+        </div>
+
+        <div class="card" id="reviews" ng-repeat="r in reviews">
+            <div class="card-header">Review By: {{r['username']}}</div>
+            <div class="card-text">on: {{r['date']}}</div>
+            <br>
+            <div class="card-text">Ranking:
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                      rel="stylesheet">
+                <div class="col-sm-4"></div>
+                <div class="row col-sm-4">
+                    <span class="fa fa-star" ng-hide="r['ranking']<1" style="color: gold"></span>
+                    <span class="fa fa-star" ng-hide="r['ranking']<2" style="color: gold"></span>
+                    <span class="fa fa-star" ng-hide="r['ranking']<3" style="color: gold"></span>
+                    <span class="fa fa-star" ng-hide="r['ranking']<4" style="color: gold"></span>
+                    <span class="fa fa-star" ng-hide="r['ranking']<5" style="color: gold"></span>
+                    <span class="fa fa-star-o" ng-hide="r['ranking']>=1"></span>
+                    <span class="fa fa-star-o" ng-hide="r['ranking']>=2"></span>
+                    <span class="fa fa-star-o" ng-hide="r['ranking']>=3"></span>
+                    <span class="fa fa-star-o" ng-hide="r['ranking']>=4"></span>
+                    <span class="fa fa-star-o" ng-hide="r['ranking']===5"></span>
+
+                </div>
+            </div>
+            <br>
+            <div class="card-text">comment: {{r['description']}}</div>
+
+            <br>
+        </div>
+    </div>
+
+
+</div>

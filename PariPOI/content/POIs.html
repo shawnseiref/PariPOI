@@ -1,0 +1,53 @@
+<div>
+
+    <form class="form-inline md-form mr-auto mb-4">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" ng-model="searchbar" name="searchbar" id="searchbar">
+        <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit" ng-click="search(searchbar)">Search</button>
+    </form>
+    <!-- categories filter-->
+    <br>
+    <div class="text-center">
+        <div class="d-inline-flex p-2" data-toggle="buttons">
+            <label class="btn btn-secondary">
+                <input class="btn btn-secondary" id="All" name="All" ng-click="showByCategory($event)" type="button"
+                       value="All"/>
+            </label>
+            <label class="btn btn-secondary">
+            <input class="btn btn-secondary" id="rank" name="rank" ng-click="showByCategory($event)" type="button"
+                   value="Sort By Rank"/>
+            </label>
+            <span ng-repeat="c in categories">
+                <label class="btn btn-secondary">
+                    <input class="btn btn-secondary" id="{{c['categoryName']}}" name={{c['categoryName']}}
+                           ng-click="showByCategory($event)"
+                           type="button" value="{{c['categoryName']}}"/>
+                </label>
+    </span>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div ng-model="allPois" ng-repeat="r in filteredPois">
+
+            <br>
+            <div class="card" id="{{r['name']}}">
+                <div class="card-header" ng-click="viewPOI(r)">Name: {{r['name']}}.<br>
+                </div>
+                <img class="poimg" alt="" ng-click="viewPOI(r)" ng-src="{{ r['image'] }}">
+                <img alt="" height="30px" id="{{r['name']}} liked" name="{{r['name']}}" ng-click="like($event)"
+                     ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(r['name'])"
+                     ng-model="rlike"
+                     ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+                <img alt="" height="30px" id="{{r['name']}} unliked" name="{{r['name']}}" ng-click="like($event)"
+                     ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(r['name'])"
+                     ng-model="rlike"
+                     ng-src="resources/images/rate-star-button.png" width="30px"/>
+                <br>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

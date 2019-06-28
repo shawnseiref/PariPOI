@@ -1,0 +1,113 @@
+<div class="container">
+    <div id="formRegister" class="form-group">
+        <form name="registerForm" ng-submit="register()">
+            <div>
+                <input name="username"
+                       type="text"
+                       ng-model="username"
+                       placeholder="Insert UserName"
+                       required
+                       minlength="3"
+                       maxlength="8"
+                />
+                <span ng-show="registerForm.username.$error.required">Please Insert a Username!</span>
+                <span ng-show="registerForm.username.$error.minlength">Username has at least 3 chars!</span>
+                <br><br>
+                <input name="password"
+                       type="password"
+                       ng-model="password"
+                       placeholder="password"
+                       required
+                       minlength="5"
+                       maxlength="10"
+                />
+                <span ng-show="registerForm.password.$error.required">Please Insert a Password!</span>
+                <span ng-show="registerForm.password.$error.minlength">Password has at least 5 chars!</span>
+                <br><br>
+                <input name="firstName"
+                       type="firstName"
+                       ng-model="firstName"
+                       placeholder="firstName"
+                       required
+                />
+                <br><br>
+                <input name="lastName"
+                       type="lastName"
+                       ng-model="lastName"
+                       placeholder="lastName"
+                       required
+                />
+                <br><br>
+                <input name="city"
+                       type="city"
+                       ng-model="city"
+                       placeholder="city"
+                       required
+                />
+                <br><br>
+                <div>
+                    <select name="countrySelection"
+                            id="countrySelection"
+                            ng-model="country">
+                        <option value="">--please select a country--</option>
+                        <option ng-repeat="c in countries" ng-value="{{c['countryID']}}">{{c['countryName']}}</option>
+                    </select>
+                </div>
+                <br>
+                <input name="email"
+                       type="email"
+                       ng-model="email"
+                       placeholder="email"
+                       required
+                />
+                <br><br>
+                <div>
+                    <select name="Q1"
+                            id="Q1"
+                            ng-model="Q1">
+                        <option value="">--please select a question--</option>
+                        <option ng-repeat="q in questions">{{q['questionBody']}}</option>
+                    </select>
+                </div>
+                <br>
+                <input name="A1"
+                       type="A1"
+                       ng-model="A1"
+                       placeholder="Answer1"
+                       required
+                />
+                <br><br>
+                <div>
+                    <select name="Q2"
+                            id="Q2"
+                            ng-model="Q2">
+                        <option value="">--please select another question--</option>
+                        <option ng-repeat="q in questions">{{q['questionBody']}}</option>
+                    </select>
+                </div>
+                <br>
+                <input name="A2"
+                       type="A2"
+                       ng-model="A2"
+                       placeholder="Answer2"
+                       required
+                />
+                <br><br>
+                hold the 'Ctrl' button to select multiple
+                <div>
+                    <select multiple
+                            name="categorySelection"
+                            id="categorySelection"
+                            ng-model="categorySelection"
+                            required
+                    >
+                        <option ng-repeat="c in categories">{{c['categoryName']}}</option>
+                    </select>
+                    <span ng-show="registerForm.categorySelection.$minlength">please select at least 2 categories</span>
+                </div>
+                <br>
+                <input name="submit" type="submit" id="submit" value="REGISTER" ng-disabled="registerForm.$invalid"/>
+            </div>
+        </form>
+    </div>
+</div>

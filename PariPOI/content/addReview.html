@@ -1,0 +1,38 @@
+<div class="form">
+    <form name="addReviewForm" ng-model="r">
+
+        <input id="desc"
+               name="desc"
+               ng-model="desc"
+               placeholder="Write Here your review"
+               required
+               type="text"
+        />
+        <span ng-show="addReviewForm.desc.$error.required">Please Insert a Description!</span>
+        <div class="row col-sm-4" ng-click="choose(rank)" ng-init="rank=0.5">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                  rel="stylesheet">
+            <span class="fa fa-star" ng-hide="rank<1" ng-mouseover="rank=1" style="color: gold"></span>
+            <span class="fa fa-star" ng-hide="rank<2" ng-mouseover="rank=2" style="color: gold"></span>
+            <span class="fa fa-star" ng-hide="rank<3" ng-mouseover="rank=3" style="color: gold"></span>
+            <span class="fa fa-star" ng-hide="rank<4" ng-mouseover="rank=4" style="color: gold"></span>
+            <span class="fa fa-star" ng-hide="rank<5" ng-mouseover="rank=5" style="color: gold"></span>
+            <span class="fa fa-star-o" ng-hide="rank>=1" ng-mouseover="rank=1"></span>
+            <span class="fa fa-star-o" ng-hide="rank>=2" ng-mouseover="rank=2"></span>
+            <span class="fa fa-star-o" ng-hide="rank>=3" ng-mouseover="rank=3"></span>
+            <span class="fa fa-star-o" ng-hide="rank>=4" ng-mouseover="rank=4"></span>
+            <span class="fa fa-star-o" ng-hide="rank===5" ng-mouseover="rank=5"></span>
+
+        </div>
+        <span ng-show="addReviewForm.desc.$error.required">Please Insert a Rank!</span>
+        <br>
+        <input id="add"
+               name="add"
+               ng-click="add($event)"
+               ng-disabled="$error.required"
+               required
+               type="button"
+               value="add review"
+        />
+    </form>
+</div>

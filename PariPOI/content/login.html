@@ -1,0 +1,31 @@
+<div class="container">
+    <div id="formLogin" class="form-group">
+        <br>
+        <h1 class="text-center">How You Doing...?</h1><br><br>
+    <form name="loginForm">
+        <div>
+                <input name="username" class="form-control" type="text" ng-model="username"
+                    placeholder="Insert UserName"
+                    required
+            />
+            <br>
+                <input name="password" class="form-control" type="password" ng-model="password" placeholder="password"
+                    required
+            />
+            <br>
+                <div class="text-center"><input type="submit" class="btn btn-fb btn-outline-primary waves-effect" id="submit" value="LOGIN" ng-click="submit($event)"/></div>
+        </div>
+    </form>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+        <a href="#!/restorePassword">forgot password</a>
+    <div>
+        <br>
+        Not a user?
+        <a href="#!/register">Register</a>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>

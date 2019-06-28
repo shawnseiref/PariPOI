@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="jumbotron" style="background:transparent !important">
+        <blockquote class="blockquote text-center" ng-hide="loggedIn">
+            <p class="mb-0">As a registered user I had the most joyfull time looking for sites in Barcelona! Register
+                today!!<br> have one? Why won't you log in?!</p>
+            <footer class="blockquote-footer">Tesla and SpaceX CEO <cite title="Source Title">Elon Musk</cite></footer>
+        </blockquote>
+    </div>
+    <div ng-hide="!loggedIn">
+        <div class="container" ng-hide="!loggedIn">
+            <br><br>
+            <div class="border border-info">
+                <h2>Popular POIs of two different categories</h2>
+                <div ng-model="popularPois" ng-repeat="p in popularPois">
+
+                    <br>
+                    <div class="card" id="{{p['name']}}">
+                    <div class="card-header" ng-click="viewPOI(p)">Name: {{p['name']}}.<br>
+                    </div>
+                    <img alt="" class="poimg" ng-click="viewPOI(p)" ng-src="{{ p['image'] }}">
+                    <img alt="" height="30px" id="{{p['name']}} liked" name="{{p['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(p['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+                    <img alt="" height="30px" id="{{p['name']}} unliked" name="{{p['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(p['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button.png" width="30px"/>
+                    <br>
+                    <div class="col-sm-3"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-hide="!loggedIn||lastSavedPois.length>0">
+            <br><br>
+            <div class="border border-info">
+                <h1> No last saved POIs to show</h1>
+            </div>
+        </div>
+
+        <div class="container" ng-hide="!loggedIn||lastSavedPois.length===0">
+            <br><br>
+            <div class="border border-info">
+                <h2> Last {{lastSavedPois.length}} saved POIs</h2>
+                <div ng-model="lastSavedPois" ng-repeat="l in lastSavedPois">
+
+                    <br>
+                    <div class="card" id="{{l['name']}}">
+                        <div class="card-header" ng-click="viewPOI(l)">Name: {{l['name']}}.<br>
+                        </div>
+                        <img alt="" class="poimg" ng-click="viewPOI(l)" ng-src="{{ l['image'] }}">
+                        <img alt="" height="30px" id="{{l['name']}} liked" name="{{l['name']}}" ng-click="like($event)"
+                             ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(l['name'])"
+                             ng-model="rlike"
+                             ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+                        <img alt="" height="30px" id="{{l['name']}} unliked" name="{{l['name']}}" ng-click="like($event)"
+                             ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(l['name'])"
+                             ng-model="rlike"
+                             ng-src="resources/images/rate-star-button.png" width="30px"/>
+                        <br>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br><br>
+        <div class="border border-info">
+            <h1> 3 random POIs:</h1>
+
+            <div ng-model="randomPois" ng-repeat="r in randomPois">
+
+                <br>
+                <div class="card" id="{{r['name']}}">
+                    <div class="card-header" ng-click="viewPOI(r)">Name: {{r['name']}}.<br>
+                    </div>
+                    <img alt="" class="poimg" ng-click="viewPOI(r)" ng-src="{{ r['image'] }}">
+                    <img alt="" height="30px" id="{{r['name']}} liked" name="{{r['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||findFav(r['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button-clicked.png" width="30px"/>
+                    <img alt="" height="30px" id="{{r['name']}} unliked" name="{{r['name']}}" ng-click="like($event)"
+                         ng-disabled="!loggedIn" ng-hide="!loggedIn||!findFav(r['name'])"
+                         ng-model="rlike"
+                         ng-src="resources/images/rate-star-button.png" width="30px"/>
+                    <br>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

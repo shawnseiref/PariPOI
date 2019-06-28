@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Barca Points of Interest</title>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- style file -->
+    <link rel="stylesheet" href="resources/style.css" />
+    <!-- javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.js"></script>
+    <!-- angular route -->
+    <script src="https://code.angularjs.org/1.7.8/angular-route.js"></script>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+</head>
+<body ng-app="ourapp" ng-controller="mainController">
+<div>
+        <h1 ng-model="username" ng-hide="!loggedIn">Hello {{username}}!</h1>
+    <h1 ng-hide="loggedIn">Hello Guest!</h1>
+    <!--    nav bar    -->
+        <nav style="font-weight: bold" class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">
+                <img src="./resources/images/barcelona_logo.png" alt="Logo" style="width:40px;">
+        </a>
+        <ul class="navbar-nav">
+            <div>
+                <li class="nav-item" ng-hide="loggedIn">
+                    <a class="nav-link" href="#!/login">Login</a>
+                </li>
+                <li class="nav-item" ng-hide="!loggedIn">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                </li>
+            </div>
+            <div>
+                <li class="nav-item" ng-hide="!loggedIn" ng-model="favNum">
+                    <a class="nav-link" href="#!/favorites">my favorites ({{favNum}})</a>
+                </li>
+            </div>
+            <div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/about">about</a>
+                </li>
+            </div>
+            <div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!/allpois">all POIs</a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+</div>
+<div ng-view></div>
+</div>
+<script src="mainController.js"></script>
+<script src="controllers/homeCtrl.js"></script>
+<script src="controllers/loginCtrl.js"></script>
+<script src="controllers/restorePasswordCtrl.js"></script>
+<script src="controllers/registerCtrl.js"></script>
+<script src="controllers/favoritesCtrl.js"></script>
+<script src="controllers/POIsCtrl.js"></script>
+<script src="controllers/poiViewCtrl.js"></script>
+<script src="controllers/addReviewCtrl.js"></script>
+<script src="controllers/aboutCtrl.js"></script>
+</body>
+</html>
